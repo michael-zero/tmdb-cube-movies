@@ -9,7 +9,7 @@ type InputProps = {
 const InputComponent = ({placeholder, ...rest}: InputProps) => {
   return (
     <S.ContainerInput>
-      <S.Input placeholder={placeholder}/>
+      <S.Input placeholder={placeholder} value={rest.value} onChange={rest.onChange}/>
     </S.ContainerInput>
   )
 }

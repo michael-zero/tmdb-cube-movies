@@ -8,23 +8,44 @@ import InputComponent from '../components/Input'
 
 const Home: NextPage = () => {
   const [movies, setMovies] = React.useState<IMovie[]>([])
+  const [query, setQuery] = React.useState('')
  
-  React.useEffect(() => {
+  const searchMovies = async (query: string) => {
+    console.log(query)
+    try {
+      if(query){
+        let response = await TmdbServices.getMoviesQuery(query)
+        const {data} = response
+        setMovies(data.results)
+      }else{
+        getAllMovies()
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getAllMovies = () => {
     TmdbServices.getMovies().then(response => {
       const {data} = response
       setMovies(data.results)
     }).catch(e => console.log(e))
-  }, [])  
+  }
+
+  React.useEffect(() => {
+    TmdbServices.getAllGenres()
+    searchMovies(query)
+  }, [query])  
 
 
-  
+
   return (
     <main className={styles.main}>
-    <InputComponent placeholder='Busque um filme por nome, ano ou gênero'/>
+    <InputComponent placeholder='Busque um filme por nome, ano ou gênero' value={query} onChange={e => setQuery(e.target.value)}/>
     <section className={styles.moviesContainer}>
     {
-      movies.map(movie => {
-        return <CardMovie key={movie.original_title} movie={movie}/>
+      movies.map((movie, index) => {
+        return <CardMovie key={index} movie={movie}/>
       })
     }
     </section>

@@ -9,4 +9,11 @@ export class TmdbServices {
 	static async getMovies(): Promise<AxiosResponse<IPageResult<IMovie>>> {
 		return apiTMDB.get(baseUrl);
 	}
+
+	static async getMoviesQuery(query: string): Promise<AxiosResponse<IPageResult<IMovie>>> {
+		return apiTMDB.get(`/search/movie?query=${query}`)
+	}
+	static async getAllGenres(): Promise<AxiosResponse<any>> {
+		return apiTMDB.get(`/genre/movie/list?language=pt-br`)
+	}
 }

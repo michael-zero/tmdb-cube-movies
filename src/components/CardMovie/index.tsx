@@ -42,7 +42,7 @@ const CardMovie = (props: {movie: IMovie}) => {
               <p className={styles.overview}>{limitarTexto(props.movie.overview, 400) || 'Nenhuma descrição encontrada.'}</p>
             </div>
           </div>
-      </div>
+        </div>
   )
 }
 
