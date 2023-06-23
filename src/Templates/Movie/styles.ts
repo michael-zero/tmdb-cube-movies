@@ -19,5 +19,14 @@ export const BoxLeft = styled.div`
 `
 export const BoxRight = styled.div`
   width: 30%;
+`
 
+export const ContainerImage = styled.div`
+  position: relative;
+  .image {
+      width: 100%;
+      height: 100%;
+      position: relative !important;
+      object-fit: contain; 
+  }
 `

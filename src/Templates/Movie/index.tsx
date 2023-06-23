@@ -4,6 +4,7 @@ import { Movie, MyPageProps } from "../../types/movies";
 import * as S from './styles'
 import Tupla from "../../components/Tupla";
 import { converterDataAmericanaParaBrasileira, converterMinutosParaHoras, formatarValor, mapearParaPortugues } from "../../utils/movies";
+import Image from 'next/image'
 
 function MovieTemplate({ movie }: MyPageProps) {
   if (!movie) {
@@ -34,7 +35,15 @@ function MovieTemplate({ movie }: MyPageProps) {
                 </S.Row>
               </S.Column>
           </S.BoxLeft>
-          <S.BoxRight></S.BoxRight>
+          <S.BoxRight>
+          <S.ContainerImage>
+            <Image 
+            fill
+            className='image'
+            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+            alt='Movie image'/>
+          </S.ContainerImage>
+          </S.BoxRight>
         </S.Row>
       </S.Column>
 
