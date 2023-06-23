@@ -42,12 +42,14 @@ const CardMovie = (props: {movie: IMovie, genres: Genres}) => {
               <div className={styles.releaseDate}>
                 <p>{props.movie.release_date}</p>
               </div>
-              <p className={styles.overview}>{limitarTexto(props.movie.overview, 400) || 'Nenhuma descrição encontrada.'}</p>
+              <p className={styles.overview}>{limitarTexto(props.movie.overview, 380) || 'Nenhuma descrição encontrada.'}</p>
+            </div>
+            <div>
               <S.GenresContainer>
-                {
-                  props.genres.map(g => <GenreComponent key={g.id} genre={g.name}/>)
-                }
-              </S.GenresContainer>
+                  {
+                    props.genres.map(g => <GenreComponent key={g.id} genre={g.name}/>)
+                  }
+                </S.GenresContainer>
             </div>
           </div>
         </div>
