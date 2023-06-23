@@ -1,6 +1,8 @@
 import { GetServerSideProps } from "next";
 import { TmdbServices } from "../../services/tmdb";
 import { Movie, MyPageProps } from "../../types/movies";
+import * as S from './styles'
+import Tupla from "../../components/Tupla";
 
 function MovieTemplate({ movie }: MyPageProps) {
   if (!movie) {
@@ -10,22 +12,42 @@ function MovieTemplate({ movie }: MyPageProps) {
   const trailer = movie.videos.results.find((video) => video.type === 'Trailer' && video.site === 'YouTube');
 
   return (
-    <div>
-      <h1>{movie.title}</h1>
-      <h2>receita:  {movie.revenue - movie.budget}</h2>
-      <p>Release Date: {movie.release_date}</p>
-      <p>{movie.overview}</p>
+    <S.Container>
+      <S.Column>
+        <S.Row><h1>{movie.title}</h1> {movie.release_date}</S.Row>
+        <S.Row>
+          <S.BoxLeft>
+              <S.Column>
+                <h2>Sinopse</h2>
+                <p>{movie.overview}</p>
+              </S.Column>
+              <S.Column>
+                <h2>Informações</h2>
+                <S.Row>
+                  <Tupla  chave={"Situação"} value={movie.status}  key={""}/>
+                  <Tupla  chave={"Idioma"} value={movie.status}  key={""}/>
+                  <Tupla  chave={"Duração"} value={movie.runtime}  key={""}/>
+                  <Tupla  chave={"Orçamento"} value={movie.revenue}  key={""}/>
+                  <Tupla  chave={"Receita"} value={movie.budget}  key={""}/>
+                  <Tupla  chave={"Lucro"} value={movie.revenue - movie.budget}  key={""}/>
+                </S.Row>
+              </S.Column>
+          </S.BoxLeft>
+          <S.BoxRight></S.BoxRight>
+        </S.Row>
+      </S.Column>
+
       {trailer && (
         <iframe
-          width="560"
-          height="315"
+          width="100%"
+          height="450"
           src={`https://www.youtube.com/embed/${trailer.key}`}
           title="Trailer"
           frameBorder="0"
           allowFullScreen
         ></iframe>
       )}
-    </div>
+    </S.Container>
   );
 }
 
