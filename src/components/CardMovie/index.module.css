@@ -27,7 +27,7 @@
 
 .rightTop{
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   height: 50px;
   padding: 0 0 0 86px;
   background-color: var(--primary-color);
@@ -44,7 +44,8 @@
 }
 
 .releaseDate{
-  margin-left: 48px;
+  margin-top: 6px;
+  margin-left: 54px;
   font-weight: 300;
   font-family: 'Abel';
 }
