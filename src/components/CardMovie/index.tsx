@@ -1,9 +1,11 @@
 import React from 'react'
 import styles from './index.module.css'
-import { IMovie } from '../../types/movies'
+import { Genres, IMovie } from '../../types/movies'
 import Image from 'next/image'
+import GenreComponent from '../Genre'
+import * as S from './styles'
 
-const CardMovie = (props: {movie: IMovie}) => {
+const CardMovie = (props: {movie: IMovie, genres: Genres}) => {
 
   function limitarTexto(texto:string, limite:number) {
     if (texto.length <= limite) {
@@ -32,6 +34,7 @@ const CardMovie = (props: {movie: IMovie}) => {
               <p>{props.movie.vote_average * 10 + '%'}</p>
             </div>
           </div>
+
             <div className={styles.rightTop}>
               <p>{props.movie.title}</p>
             </div>
@@ -40,6 +43,11 @@ const CardMovie = (props: {movie: IMovie}) => {
                 <p>{props.movie.release_date}</p>
               </div>
               <p className={styles.overview}>{limitarTexto(props.movie.overview, 400) || 'Nenhuma descrição encontrada.'}</p>
+              <S.GenresContainer>
+                {
+                  props.genres.map(g => <GenreComponent key={g.id} genre={g.name}/>)
+                }
+              </S.GenresContainer>
             </div>
           </div>
         </div>

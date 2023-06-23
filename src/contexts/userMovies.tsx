@@ -1,11 +1,12 @@
 import React, { ReactNode, useState } from "react";
 import { Genres } from "../types/movies";
+import { TmdbServices } from "../services/tmdb";
 
 //#######################################################
 // CRIACAO DO CONTEXTO E SUAS PROPRIEDADES
 //#######################################################
 type ContextProps = {
-  genres: any;
+  genres: Genres;
 };
 
 type Props = {
@@ -27,15 +28,25 @@ export const MoviesProvider = ({ children }: Props) => {
     genres,
   };
 
+  const getAllGenres = async () => {
+    let {data} = await TmdbServices.getAllGenres()
+    setGenres(data.genres)
+  }
+  React.useEffect(() => {
+    getAllGenres()
+  }, [])
+
   //retorna o provedor de dados realmente
   return <MoviesContext.Provider value={value}>{children}</MoviesContext.Provider>;
 };
 
-export function useUserContext() {
+export function useMoviesContext() {
   const context = React.useContext(MoviesContext);
 
+
+
   if (typeof context === "undefined") {
-    throw new Error("useUserContext must be used within an UserContext");
+    throw new Error("useMoviesContext must be used within an MoviesContext");
   }
 
   return context;
