@@ -3,6 +3,7 @@ import { TmdbServices } from "../../services/tmdb";
 import { Movie, MyPageProps } from "../../types/movies";
 import * as S from './styles'
 import Tupla from "../../components/Tupla";
+import { converterDataAmericanaParaBrasileira, converterMinutosParaHoras, formatarValor, mapearParaPortugues } from "../../utils/movies";
 
 function MovieTemplate({ movie }: MyPageProps) {
   if (!movie) {
@@ -14,7 +15,7 @@ function MovieTemplate({ movie }: MyPageProps) {
   return (
     <S.Container>
       <S.Column>
-        <S.Row><h1>{movie.title}</h1> {movie.release_date}</S.Row>
+        <S.Row><h1>{movie.title}</h1> {converterDataAmericanaParaBrasileira(movie.release_date)}</S.Row>
         <S.Row>
           <S.BoxLeft>
               <S.Column>
@@ -24,12 +25,12 @@ function MovieTemplate({ movie }: MyPageProps) {
               <S.Column>
                 <h2>Informações</h2>
                 <S.Row>
-                  <Tupla  chave={"Situação"} value={movie.status}  key={""}/>
+                  <Tupla  chave={"Situação"} value={mapearParaPortugues(movie.status)}  key={""}/>
                   <Tupla  chave={"Idioma"} value={movie.status}  key={""}/>
-                  <Tupla  chave={"Duração"} value={movie.runtime}  key={""}/>
-                  <Tupla  chave={"Orçamento"} value={movie.revenue}  key={""}/>
-                  <Tupla  chave={"Receita"} value={movie.budget}  key={""}/>
-                  <Tupla  chave={"Lucro"} value={movie.revenue - movie.budget}  key={""}/>
+                  <Tupla  chave={"Duração"} value={converterMinutosParaHoras(movie.runtime)}  key={""}/>
+                  <Tupla  chave={"Orçamento"} value={formatarValor(movie.revenue)}  key={""}/>
+                  <Tupla  chave={"Receita"} value={formatarValor(movie.budget)}  key={""}/>
+                  <Tupla  chave={"Lucro"} value={formatarValor(movie.revenue - movie.budget)}  key={""}/>
                 </S.Row>
               </S.Column>
           </S.BoxLeft>

@@ -28,3 +28,42 @@ export function getGenreIdByName(genres: Genres, genreName: string) {
     return null;
   }
 }
+
+export function mapearParaPortugues(valorEmIngles: string): string {
+  const mapeamento: Record<string, string> = {
+    Rumored: 'Rumor',
+    Planned: 'Planejado',
+    'In Production': 'Em Produção',
+    'Post Production': 'Pós-Produção',
+    Released: 'Lançado',
+    Canceled: 'Cancelado',
+    Scheduled: 'Agendado',
+  };
+
+  return mapeamento[valorEmIngles] || valorEmIngles;
+}
+
+export function formatarValor(valor: number): string {
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  });
+
+  return formatter.format(valor);
+}
+
+export function converterMinutosParaHoras(tempoEmMinutos: number): string {
+  const horas = Math.floor(tempoEmMinutos / 60);
+  const minutos = tempoEmMinutos % 60;
+
+  return `${horas}h ${minutos}min`;
+}
+
+export function converterDataAmericanaParaBrasileira(dataAmericana: string): string {
+  const partes = dataAmericana.split('-');
+  const ano = partes[0];
+  const mes = partes[1];
+  const dia = partes[2];
+
+  return `${dia}/${mes}/${ano}`;
+}

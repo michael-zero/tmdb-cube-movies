@@ -38,7 +38,14 @@ export interface Movie {
   overview: string;
   runtime: number;
   vote_average: number;
-  status: string;
+  status: 'Rumored'
+  | 'Planned'
+  | 'In Production'
+  | 'Post Production'
+  | 'Released'
+  | 'Canceled'
+  | 'Scheduled';
+  
   genres: Genres;
   revenue: number
   budget: number
