@@ -26,6 +26,31 @@ export interface IMovie {
   vote_count: number
 }
 
+export interface MyPageProps {
+  movie: Movie | null;
+}
+
+
+export interface Movie {
+  id: number;
+  title: string;
+  release_date: string;
+  overview: string;
+  runtime: number;
+  vote_average: number;
+  status: string;
+  genres: Genres;
+  revenue: number
+  budget: number
+  videos: {
+    results: {
+      key: string;
+      site: string;
+      type: string;
+    }[];
+  };
+}
+
 export type Genre = {
   name: string 
   id: number

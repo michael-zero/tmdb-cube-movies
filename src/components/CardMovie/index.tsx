@@ -5,7 +5,7 @@ import Image from 'next/image'
 import GenreComponent from '../Genre'
 import * as S from './styles'
 
-const CardMovie = (props: {movie: IMovie, genres: Genres}) => {
+const CardMovie = (props: {movie: IMovie, genres: Genres, onClick?: () => void}) => {
 
   function limitarTexto(texto:string, limite:number) {
     if (texto.length <= limite) {
@@ -17,7 +17,7 @@ const CardMovie = (props: {movie: IMovie, genres: Genres}) => {
   }
 
   return (
-      <div className={styles.container}>
+      <div className={styles.container} onClick={props.onClick}>
         {/* image */}
         <div className={styles.left}>
           <Image 
@@ -42,7 +42,7 @@ const CardMovie = (props: {movie: IMovie, genres: Genres}) => {
               <div className={styles.releaseDate}>
                 <p>{props.movie.release_date}</p>
               </div>
-              <p className={styles.overview}>{limitarTexto(props.movie.overview, 380) || 'Nenhuma descrição encontrada.'}</p>
+              <p className={styles.overview}>{limitarTexto(props.movie.overview, 300) || 'Nenhuma descrição encontrada.'}</p>
             </div>
             <div>
               <S.GenresContainer>

@@ -7,8 +7,10 @@ import styles from './page.module.css'
 import InputComponent from '../components/Input'
 import { useMoviesContext } from '../contexts/userMovies'
 import { getGenreIdByName, isNumeric, searchObjectsByIds } from '../utils/movies'
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
+  const route = useRouter()
   const {genres} = useMoviesContext()
   const [movies, setMovies] = React.useState<IMovie[]>([])
   const [query, setQuery] = React.useState('')
@@ -81,7 +83,7 @@ const Home: NextPage = () => {
     <section className={styles.moviesContainer}>
     {
       movies.map((movie, index) => {
-        return <CardMovie genres={searchObjectsByIds(genres, movie.genre_ids)} key={index} movie={movie}/>
+        return <CardMovie onClick={() => route.push(`/${movie.id}`)} genres={searchObjectsByIds(genres, movie.genre_ids)} key={index} movie={movie}/>
       })
     }
     </section>
