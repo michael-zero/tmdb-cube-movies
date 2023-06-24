@@ -45,9 +45,13 @@ export default class MyDocument extends Document {
           <Head>
             
             <meta charSet="utf-8" />
-           <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100&family=Work+Sans&display=swap" rel="stylesheet"></link>
-            <link rel="preconnect" href="https://fonts.googleapis.com"/>
-            <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;500&display=swap"/>
+
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Abel&display=swap"/>
+
+           {/* <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100&family=Work+Sans&display=swap" rel="stylesheet"></link> */}
+            {/* <link rel="preconnect" href="https://fonts.googleapis.com"/> */}
+            {/* <link rel="preconnect" href="https://fonts.gstatic.com"></link> */}
           </Head>
           <body >
             <Main />

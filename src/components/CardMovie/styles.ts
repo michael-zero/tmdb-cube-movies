@@ -33,5 +33,9 @@ export const ContainerTitle = styled.div`
   display: flex;
   height: 100%;
   align-items: flex-end;
+`
 
+export const OverView = styled.p`
+  font-size: 16px;
+  font-family: 'Lato' sans-serif;
 `

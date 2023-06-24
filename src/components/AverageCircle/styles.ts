@@ -13,7 +13,6 @@ export const CircleContainer = styled.div<{position: string}>`
 `
 
 export const CircleTwo = styled.div`
-  font-family: 'Abel';
   top: 6%;
   left: 2%;
   border: 4px solid var(--secondary-color);

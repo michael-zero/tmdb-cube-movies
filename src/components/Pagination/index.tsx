@@ -21,7 +21,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, prevPage,
   return (
     <nav>
       <S.Container className='pagination'>
-        <button onClick={prevPage}>ant</button>
+        <p style={{cursor: 'pointer'}} onClick={prevPage}>Página anterior</p>
         {pageNumbers.map(number => (
           <S.Item key={number} className='page-item'>
             {
@@ -32,7 +32,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, prevPage,
             }
           </S.Item>
         ))}
-        <button onClick={nextPage}>prox</button>
+        <p style={{cursor: 'pointer'}} onClick={nextPage}>Próxima página</p>
 
       </S.Container>
     </nav>

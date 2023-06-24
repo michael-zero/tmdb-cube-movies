@@ -5,6 +5,7 @@ import Image from 'next/image'
 import GenreComponent from '../Genre'
 import * as S from './styles'
 import AverageCircle from '../AverageCircle'
+import { converterDataAmericanaParaBrasileira } from '../../utils/movies'
 
 const CardMovie = (props: {movie: IMovie, genres: Genres, onClick?: () => void}) => {
 
@@ -40,9 +41,9 @@ const CardMovie = (props: {movie: IMovie, genres: Genres, onClick?: () => void})
             </S.RightTop>
             <div className={styles.rightBottom}>
               <div className={styles.releaseDate}>
-                <p>{props.movie.release_date}</p>
+                <p>{converterDataAmericanaParaBrasileira(props.movie.release_date)}</p>
               </div>
-              <p className={styles.overview}>{limitarTexto(props.movie.overview, 300) || 'Nenhuma descrição encontrada.'}</p>
+              <S.OverView>{limitarTexto(props.movie.overview, 300) || 'Nenhuma descrição encontrada.'}</S.OverView>
             </div>
             <div>
               <S.GenresContainer>
