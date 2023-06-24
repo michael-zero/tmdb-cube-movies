@@ -43,6 +43,7 @@ export default class MyDocument extends Document {
       return (
         <Html lang="pt-BR">
           <Head>
+            
             <meta charSet="utf-8" />
            <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100&family=Work+Sans&display=swap" rel="stylesheet"></link>
             <link rel="preconnect" href="https://fonts.googleapis.com"/>

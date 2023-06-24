@@ -80,7 +80,6 @@ export function converterIdiomaTMDB(originalLanguage: string): string {
     zh: "Chinês",
     ru: "Russo",
     hi: "Hindi"
-    // Adicione mais idiomas conforme necessário
   };
 
   const idioma = idiomas[originalLanguage.toLowerCase()] || "Desconhecido";

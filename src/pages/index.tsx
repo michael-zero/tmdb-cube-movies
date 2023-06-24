@@ -8,6 +8,10 @@ import InputComponent from '../components/Input'
 import { useMoviesContext } from '../contexts/userMovies'
 import { getGenreIdByName, isNumeric, searchObjectsByIds } from '../utils/movies'
 import { useRouter } from 'next/router'
+import ReactPaginate from 'react-paginate'
+import * as S from './styles'
+import Pagination from '../components/Pagination'
+
 
 const Home: NextPage = () => {
   const route = useRouter()
@@ -15,7 +19,19 @@ const Home: NextPage = () => {
   const [movies, setMovies] = React.useState<IMovie[]>([])
   const [query, setQuery] = React.useState('')
   const [timeoutId, setTimeoutId] = React.useState<NodeJS.Timeout | undefined>(undefined);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [moviesPerPage] = React.useState(5);
 
+
+  // Get current posts
+  const indexOfLastPost = currentPage * moviesPerPage;
+  const indexOfFirstPost = indexOfLastPost - moviesPerPage;
+  const currentMovies = movies.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Change page
+  const paginate = (pageNumber: React.SetStateAction<number>) => setCurrentPage(pageNumber);
+
+// ==============
   function delayedSearchMovies(value: string) {
     clearTimeout(timeoutId);
 
@@ -68,25 +84,29 @@ const Home: NextPage = () => {
     }).catch(e => console.log(e))
   }
 
-  
-
   React.useEffect(() => {
     getAllMovies()
   }, [])  
-
-
- 
 
   return (
     <main className={styles.main}>
     <InputComponent placeholder='Busque um filme por nome, ano ou gênero' value={query} onChange={handleInputChange}/>
     <section className={styles.moviesContainer}>
     {
-      movies.map((movie, index) => {
+      currentMovies.map((movie, index) => {
         return <CardMovie onClick={() => route.push(`/${movie.id}`)} genres={searchObjectsByIds(genres, movie.genre_ids)} key={index} movie={movie}/>
       })
     }
     </section>
+    <footer>
+      <Pagination
+        currentPage={currentPage}
+        postsPerPage={moviesPerPage}
+        totalPosts={movies.length}
+        paginate={paginate}
+      />
+
+    </footer>
   </main>
   )
 }

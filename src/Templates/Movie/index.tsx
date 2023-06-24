@@ -1,6 +1,4 @@
-import { GetServerSideProps } from "next";
-import { TmdbServices } from "../../services/tmdb";
-import { Movie, MyPageProps } from "../../types/movies";
+import { MyPageProps } from "../../types/movies";
 import * as S from './styles'
 import Tupla from "../../components/Tupla";
 import { converterDataAmericanaParaBrasileira, converterIdiomaTMDB, converterMinutosParaHoras, formatarValor, mapearParaPortugues } from "../../utils/movies";
@@ -50,7 +48,7 @@ function MovieTemplate({ movie }: MyPageProps) {
                       movie.genres.map(g => <GenreComponent key={g.id} genre={g.name}/>)
                     }
                   </S.GenresContainer>
-                  <AverageCircle size="large" position="relative" value={movie.vote_average}/>
+                  <AverageCircle size="large" position="relative" value={movie.vote_average * 10 + '%'}/>
               </S.Row>
           </S.BoxLeft>
           <S.BoxRight>

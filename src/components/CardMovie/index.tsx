@@ -30,7 +30,7 @@ const CardMovie = (props: {movie: IMovie, genres: Genres, onClick?: () => void})
         {/* other infos */}
         <div className={styles.right}>
           {/* circle */}
-          <AverageCircle size='small' position='absolute' value={props.movie.vote_average}/>
+          <AverageCircle size='medium' position='absolute' value={props.movie.vote_average * 10 + '%'}/>
 
             <div className={styles.rightTop}>
               <p>{props.movie.title}</p>
