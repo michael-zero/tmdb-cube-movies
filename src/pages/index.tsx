@@ -103,7 +103,7 @@ const Home: NextPage = () => {
   }
 
   const prevPage = () => {
-    setCurrentPageRsqt(p => p - 1)
+      setCurrentPageRsqt(p => p - 1)
   }
 
   return (

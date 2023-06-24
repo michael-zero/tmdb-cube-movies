@@ -10,3 +10,13 @@ export const Item = styled.li`
   list-style: none;
   padding: 4px;
 `
+
+export const CustomBTN = styled.button`
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  :disabled{
+    cursor: not-allowed;
+  }
+`

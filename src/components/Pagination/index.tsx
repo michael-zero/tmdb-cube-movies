@@ -21,7 +21,9 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, prevPage,
   return (
     <nav>
       <S.Container className='pagination'>
-        <p style={{cursor: 'pointer'}} onClick={prevPage}>Página anterior</p>
+        <S.CustomBTN 
+        disabled={currentPage - 1 <= 0}
+        style={{cursor: 'pointer'}} onClick={prevPage}>Página anterior</S.CustomBTN>
         {pageNumbers.map(number => (
           <S.Item key={number} className='page-item'>
             {
@@ -32,7 +34,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, prevPage,
             }
           </S.Item>
         ))}
-        <p style={{cursor: 'pointer'}} onClick={nextPage}>Próxima página</p>
+        <S.CustomBTN style={{cursor: 'pointer'}} onClick={nextPage}>Próxima página</S.CustomBTN>
 
       </S.Container>
     </nav>
