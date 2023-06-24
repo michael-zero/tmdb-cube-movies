@@ -8,12 +8,11 @@ Aplicação frontend que consome informações da API do The Movie Database.
 - Busca por filmes: nome, ano ou gênero.
 - Informações gerais sobre filmes: oraçamentos, avaliação, duração do filme.
 - Exibição do trailer, caso exista.
-- 
 
 ## Instalação
 
-yarn install: execute esse comando na raiz do projeto para instalar todas as dependências. 
-yarn dev: para executar a aplicação.
+```yarn install```: execute esse comando na raiz do projeto para instalar todas as dependências. 
+```yarn dev```: para executar a aplicação.
 
 ## Uso
 
