@@ -67,3 +67,22 @@ export function converterDataAmericanaParaBrasileira(dataAmericana: string): str
 
   return `${dia}/${mes}/${ano}`;
 }
+export function converterIdiomaTMDB(originalLanguage: string): string {
+  const idiomas: Record<string, string> = {
+    en: "Inglês",
+    es: "Espanhol",
+    fr: "Francês",
+    pt: "Português",
+    de: "Alemão",
+    it: "Italiano",
+    ja: "Japonês",
+    ko: "Coreano",
+    zh: "Chinês",
+    ru: "Russo",
+    hi: "Hindi"
+    // Adicione mais idiomas conforme necessário
+  };
+
+  const idioma = idiomas[originalLanguage.toLowerCase()] || "Desconhecido";
+  return idioma;
+}

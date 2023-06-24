@@ -3,10 +3,11 @@ import { TmdbServices } from "../../services/tmdb";
 import { Movie, MyPageProps } from "../../types/movies";
 import * as S from './styles'
 import Tupla from "../../components/Tupla";
-import { converterDataAmericanaParaBrasileira, converterMinutosParaHoras, formatarValor, mapearParaPortugues } from "../../utils/movies";
+import { converterDataAmericanaParaBrasileira, converterIdiomaTMDB, converterMinutosParaHoras, formatarValor, mapearParaPortugues } from "../../utils/movies";
 import Image from 'next/image'
 
 function MovieTemplate({ movie }: MyPageProps) {
+
   if (!movie) {
     return <div>Movie not found</div>;
   }
@@ -14,20 +15,27 @@ function MovieTemplate({ movie }: MyPageProps) {
   const trailer = movie.videos.results.find((video) => video.type === 'Trailer' && video.site === 'YouTube');
 
   return (
-    <S.Container>
+    <S.Container style={{flexDirection: 'column', gap: '32px'}}>
       <S.Column>
-        <S.Row><h1>{movie.title}</h1> {converterDataAmericanaParaBrasileira(movie.release_date)}</S.Row>
-        <S.Row>
-          <S.BoxLeft>
+        <S.Row 
+        style={{alignItems: 'center', justifyContent: 'space-between', padding: '16px 24px 8px 24px', backgroundColor: '#E6E6E6'}}>
+        <S.Title>{movie.title}</S.Title> 
+        <S.ReleaseDate>{converterDataAmericanaParaBrasileira(movie.release_date)}</S.ReleaseDate>
+        </S.Row>
+        
+        <S.Row style={{backgroundColor: '#F2F2F2'}}>
+          <S.BoxLeft style={{padding: '24px', gap: '24px', flexDirection: 'column'}}>
               <S.Column>
-                <h2>Sinopse</h2>
+                <S.Subtitle>Sinopse</S.Subtitle>
+                <S.Line/>
                 <p>{movie.overview}</p>
               </S.Column>
               <S.Column>
-                <h2>Informações</h2>
-                <S.Row>
+                <S.Subtitle>Informações</S.Subtitle>
+                <S.Line/>
+                <S.Row style={{gap: '8px'}}>
                   <Tupla  chave={"Situação"} value={mapearParaPortugues(movie.status)}  key={""}/>
-                  <Tupla  chave={"Idioma"} value={movie.status}  key={""}/>
+                  <Tupla  chave={"Idioma"} value={converterIdiomaTMDB(movie.original_language)}  key={""}/>
                   <Tupla  chave={"Duração"} value={converterMinutosParaHoras(movie.runtime)}  key={""}/>
                   <Tupla  chave={"Orçamento"} value={formatarValor(movie.revenue)}  key={""}/>
                   <Tupla  chave={"Receita"} value={formatarValor(movie.budget)}  key={""}/>

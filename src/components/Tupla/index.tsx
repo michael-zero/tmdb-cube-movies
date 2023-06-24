@@ -27,16 +27,14 @@ const Tupla = ({
 			<S.Text
 				className="tupla-label"
 				style={{
-					fontSize: '12px',
-					lineHeight: '16px',
-					color: 'rgba(0, 0, 0, 0.56)',
+					color: '#3C7DA5',
 					...keyStyle,
 				}}
 			>
 				{chave !== '' ? chave + `${twoDots ? ':' : ''}` : chave}
 			</S.Text>
 
-			<S.Text className="tupla-value" style={{...textStyle}}>
+			<S.Text className="tupla-value" style={{fontSize: '14px', fontWeight: 400, ...textStyle}}>
 				{value || '--'}
 			</S.Text>
 		</S.Container>
