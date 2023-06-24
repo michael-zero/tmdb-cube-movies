@@ -1,34 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Zero Movies
 
-## Getting Started
+Aplicação frontend que consome informações da API do The Movie Database. 
 
-First, run the development server:
+## Recursos
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- Listagem de filmes.
+- Busca por filmes: nome, ano ou gênero.
+- Informações gerais sobre filmes: oraçamentos, avaliação, duração do filme.
+- Exibição do trailer, caso exista.
+- 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Instalação
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+yarn install: execute esse comando na raiz do projeto para instalar todas as dependências. 
+yarn dev: para executar a aplicação.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Uso
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Na tela inicial serão exibidos cinco filmes onde o usuário poderá pesquisar por nome, gênero ou ano de lançamento. 
+Ao fim da página temos uma paginção, onde em cada página vinda da API são trazidos 20 filmes e foram subdividos e quatro parte, onde cada
+uma exibe cinco filmes. E ao clicar em 'próxima página' ou 'página anterior' que será feita uma nova requisição para a nova página.
+Ao clicar em filme, uma requisição será feita do lado do servidor trazendo informações específicas de um único filme, como trailer, lucros e etc.
 
-## Learn More
+## Contato
 
-To learn more about Next.js, take a look at the following resources:
+michaeldevjs@gmail.com
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Agradecimentos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Agradeça às pessoas ou organizações que ajudaram, inspiraram ou contribuíram de alguma forma para o projeto.
 
-## Deploy on Vercel
+## Status do Projeto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Está concluído, todavia pode ser melhorado. 
+1. Paginação que devido ao tempo não deu para usar a melhor implementação.
+2. Padronizar totalmente para styled-components.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
