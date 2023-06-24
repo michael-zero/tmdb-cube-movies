@@ -3,9 +3,9 @@ import styled from 'styled-components'
 export const Container = styled.div` 
   width: fit-content;
   height: fit-content;
-  padding: 4px; 
+  padding: 6px; 
   background-color: #fff;
-  border-radius: 12px;
+  border-radius: 14px;
   outline: 1px solid var(--primary-color);
 `
 

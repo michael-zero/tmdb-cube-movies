@@ -8,8 +8,6 @@ import InputComponent from '../components/Input'
 import { useMoviesContext } from '../contexts/userMovies'
 import { getGenreIdByName, isNumeric, searchObjectsByIds } from '../utils/movies'
 import { useRouter } from 'next/router'
-import ReactPaginate from 'react-paginate'
-import * as S from './styles'
 import Pagination from '../components/Pagination'
 
 
@@ -20,18 +18,30 @@ const Home: NextPage = () => {
   const [query, setQuery] = React.useState('')
   const [timeoutId, setTimeoutId] = React.useState<NodeJS.Timeout | undefined>(undefined);
   const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPageRqst, setCurrentPageRsqt] = React.useState(1);
   const [moviesPerPage] = React.useState(5);
 
 
   // Get current posts
+  const FILMES_POR_PAGINA = 20;
+  const ITENS_POR_PAGINA = 5;
+  const [filmesExibidos, setFilmesExibidos] = React.useState(0)
   const indexOfLastPost = currentPage * moviesPerPage;
   const indexOfFirstPost = indexOfLastPost - moviesPerPage;
   const currentMovies = movies.slice(indexOfFirstPost, indexOfLastPost);
 
-  // Change page
-  const paginate = (pageNumber: React.SetStateAction<number>) => setCurrentPage(pageNumber);
+  function isMultiploDeQuatro(numero: number) {
+    return numero % 4 === 0;
+  }
 
-// ==============
+  // Change page
+  const paginate = (pageNumber: number) => {
+    if(isMultiploDeQuatro(pageNumber)){
+      setCurrentPageRsqt(currentPageRqst+1)
+    }
+    setCurrentPage(pageNumber)
+  };
+  
   function delayedSearchMovies(value: string) {
     clearTimeout(timeoutId);
 
@@ -78,7 +88,7 @@ const Home: NextPage = () => {
   };
 
   const getAllMovies = () => {
-    TmdbServices.getMovies().then(response => {
+    TmdbServices.getMovies(currentPageRqst).then(response => {
       const {data} = response
       setMovies(data.results)
     }).catch(e => console.log(e))
@@ -86,20 +96,30 @@ const Home: NextPage = () => {
 
   React.useEffect(() => {
     getAllMovies()
-  }, [])  
+  }, [currentPageRqst])  
+
+  const nextPage = () => {
+    setCurrentPageRsqt(p => p + 1)
+  }
+
+  const prevPage = () => {
+    setCurrentPageRsqt(p => p - 1)
+  }
 
   return (
-    <main className={styles.main}>
+    <section className={styles.main}>
     <InputComponent placeholder='Busque um filme por nome, ano ou gênero' value={query} onChange={handleInputChange}/>
-    <section className={styles.moviesContainer}>
+    <div className={styles.moviesContainer}>
     {
       currentMovies.map((movie, index) => {
         return <CardMovie onClick={() => route.push(`/${movie.id}`)} genres={searchObjectsByIds(genres, movie.genre_ids)} key={index} movie={movie}/>
       })
     }
-    </section>
+    </div>
     <footer>
       <Pagination
+        nextPage={nextPage}
+        prevPage={prevPage}
         currentPage={currentPage}
         postsPerPage={moviesPerPage}
         totalPosts={movies.length}
@@ -107,7 +127,7 @@ const Home: NextPage = () => {
       />
 
     </footer>
-  </main>
+  </section>
   )
 }
 

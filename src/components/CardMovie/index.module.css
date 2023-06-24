@@ -2,9 +2,10 @@
   cursor: pointer;
   display: flex;
   background-color: var(--terciary-color);
-  width: 100%;
   max-height: 240px;
+  width: 100%;
   max-width: 750px;
+  min-width: 750px;
 }
 .left{
   width: 22%;
@@ -18,25 +19,6 @@
       object-fit: cover; 
   }
 }
-.right{
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 24px;
-  width: 78%;
-  overflow: hidden;
-}
-
-.rightTop{
-  display: flex;
-  align-items: flex-end;
-  height: 50px;
-  padding: 0 0 0 86px;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  font-size: 28px;
-  min-height: 50px;
-}
 
 .rightBottom {
   display: flex;
@@ -44,12 +26,12 @@
   gap: 24px;
   padding: 0 24px 24px 24px; 
   background-color: var(--terciary-color);
-  min-height: 150px;
+  min-height: 140px;
 }
 
 .releaseDate{
   margin-top: 6px;
-  margin-left: 54px;
+  margin-left: 70px;
   font-weight: 300;
   font-family: 'Abel';
 }

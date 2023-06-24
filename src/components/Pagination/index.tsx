@@ -5,11 +5,13 @@ import AverageCircle from '../AverageCircle';
 type Props = {
   postsPerPage: number, 
   totalPosts: number, 
-  paginate:  (pageNumber: React.SetStateAction<number>) => void
+  paginate:  (pageNumber: number) => void
   currentPage: number
+  nextPage:  () => void
+  prevPage:  () => void
 }
 
-const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }: Props) => {
+const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage, prevPage, nextPage }: Props) => {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
@@ -19,6 +21,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }: Props) 
   return (
     <nav>
       <S.Container className='pagination'>
+        <button onClick={prevPage}>ant</button>
         {pageNumbers.map(number => (
           <S.Item key={number} className='page-item'>
             {
@@ -29,6 +32,8 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }: Props) 
             }
           </S.Item>
         ))}
+        <button onClick={nextPage}>prox</button>
+
       </S.Container>
     </nav>
   );

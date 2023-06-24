@@ -28,13 +28,16 @@ const CardMovie = (props: {movie: IMovie, genres: Genres, onClick?: () => void})
           alt='Movie image'/>
         </div>
         {/* other infos */}
-        <div className={styles.right}>
+        <S.Right>
           {/* circle */}
-          <AverageCircle size='medium' position='absolute' value={props.movie.vote_average * 10 + '%'}/>
-
-            <div className={styles.rightTop}>
-              <p>{props.movie.title}</p>
-            </div>
+            <S.RightTop>
+              <S.ContainerCircle>
+                <AverageCircle size='medium' position='absolute' value={props.movie.vote_average * 10 + '%'}/>
+              </S.ContainerCircle>
+              <S.ContainerTitle>
+                  <p>{props.movie.title}</p>
+              </S.ContainerTitle>
+            </S.RightTop>
             <div className={styles.rightBottom}>
               <div className={styles.releaseDate}>
                 <p>{props.movie.release_date}</p>
@@ -48,7 +51,7 @@ const CardMovie = (props: {movie: IMovie, genres: Genres, onClick?: () => void})
                   }
                 </S.GenresContainer>
             </div>
-          </div>
+          </S.Right>
         </div>
   )
 }

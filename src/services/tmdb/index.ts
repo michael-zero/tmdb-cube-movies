@@ -5,8 +5,8 @@ import { Genres, IMovie, IPageResult, Movie} from '../../types/movies';
 const baseUrl = '';
 export class TmdbServices {
 	
-	static async getMovies(): Promise<AxiosResponse<IPageResult<IMovie>>> {
-		return apiTMDB.get('/movie/now_playing?language=pt-br&page=1');
+	static async getMovies(page: number): Promise<AxiosResponse<IPageResult<IMovie>>> {
+		return apiTMDB.get(`/movie/now_playing?language=pt-br&page=${page}`);
 	}
 
 	static async getMoviesQuery(query: string): Promise<AxiosResponse<IPageResult<IMovie>>> {

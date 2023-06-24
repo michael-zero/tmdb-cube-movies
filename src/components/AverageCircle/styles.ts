@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const CircleContainer = styled.div<{position: string}>`
-    top: ${props => props.position === 'absolute' ? '6%' : 0};
-    left: ${props => props.position === 'absolute' ? '2%' : 0};
+    transform: ${props => props.position === 'absolute' ? 'translateY(50%)' : 0};
+    /* left: ${props => props.position === 'absolute' ? '2%' : 0}; */
     background-color: var(--primary-color);
     width: 60px;
     height: 60px;
