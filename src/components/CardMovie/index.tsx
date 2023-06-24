@@ -4,6 +4,7 @@ import { Genres, IMovie } from '../../types/movies'
 import Image from 'next/image'
 import GenreComponent from '../Genre'
 import * as S from './styles'
+import AverageCircle from '../AverageCircle'
 
 const CardMovie = (props: {movie: IMovie, genres: Genres, onClick?: () => void}) => {
 
@@ -29,11 +30,7 @@ const CardMovie = (props: {movie: IMovie, genres: Genres, onClick?: () => void})
         {/* other infos */}
         <div className={styles.right}>
           {/* circle */}
-          <div className={styles.circle}>
-            <div className={styles.circleTwo}>
-              <p>{props.movie.vote_average * 10 + '%'}</p>
-            </div>
-          </div>
+          <AverageCircle value={props.movie.vote_average}/>
 
             <div className={styles.rightTop}>
               <p>{props.movie.title}</p>

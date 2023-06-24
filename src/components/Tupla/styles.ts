@@ -9,9 +9,8 @@ export const Container = styled.div`
 `;
 
 export const Text = styled.span<{capitalize?: boolean}>`
-	font-family: 'Open Sans';
 	font-style: normal;
-	font-weight: 600;
+	text-align: center;
 	font-size: 16px;
 	line-height: 16px;
 	color: rgba(0, 0, 0, 0.88);

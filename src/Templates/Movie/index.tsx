@@ -5,6 +5,7 @@ import * as S from './styles'
 import Tupla from "../../components/Tupla";
 import { converterDataAmericanaParaBrasileira, converterIdiomaTMDB, converterMinutosParaHoras, formatarValor, mapearParaPortugues } from "../../utils/movies";
 import Image from 'next/image'
+import GenreComponent from "../../components/Genre";
 
 function MovieTemplate({ movie }: MyPageProps) {
 
@@ -42,6 +43,13 @@ function MovieTemplate({ movie }: MyPageProps) {
                   <Tupla  chave={"Lucro"} value={formatarValor(movie.revenue - movie.budget)}  key={""}/>
                 </S.Row>
               </S.Column>
+              <S.Row>
+              <S.GenresContainer>
+                  {
+                    movie.genres.map(g => <GenreComponent key={g.id} genre={g.name}/>)
+                  }
+                </S.GenresContainer>
+              </S.Row>
           </S.BoxLeft>
           <S.BoxRight>
           <S.ContainerImage>

@@ -50,3 +50,7 @@ export const Line = styled.div`
   margin-top: 4px;
   margin-bottom: 16px;
 `
+export const GenresContainer = styled.div`
+  display: flex;
+  gap: 8px;
+`
