@@ -25,10 +25,6 @@ Ao clicar em filme, uma requisição será feita do lado do servidor trazendo in
 
 michaeldevjs@gmail.com
 
-## Agradecimentos
-
-Agradeça às pessoas ou organizações que ajudaram, inspiraram ou contribuíram de alguma forma para o projeto.
-
 ## Status do Projeto
 
 Está concluído, todavia pode ser melhorado. 
