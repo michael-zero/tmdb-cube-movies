@@ -4,11 +4,10 @@ export const Container = styled.div`
   cursor: pointer;
   display: flex;
   background-color: var(--terciary-color);
-  max-height: 240px;
+  max-height: 250px;
   width: 100%;
   max-width: 750px;
   min-width: 400px;
-
  
 `
 
@@ -47,7 +46,7 @@ export const RightBottom = styled.div`
   gap: 24px;
   padding: 0 24px 24px 24px; 
   background-color: var(--terciary-color);
-  min-height: 140px;
+  min-height: 150px;
 `
 export const ReleaseDate = styled.div`
    margin-top: 6px;
