@@ -19,15 +19,15 @@ const CardMovie = (props: {movie: IMovie, genres: Genres, onClick?: () => void})
   }
 
   return (
-      <div className={styles.container} onClick={props.onClick}>
+      <S.Container onClick={props.onClick}>
         {/* image */}
-        <div className={styles.left}>
+        <S.Left>
           <Image 
           fill
           className='image'
           src={`https://image.tmdb.org/t/p/original${props.movie.poster_path}`}
           alt='Movie image'/>
-        </div>
+        </S.Left>
         {/* other infos */}
         <S.Right>
           {/* circle */}
@@ -39,12 +39,12 @@ const CardMovie = (props: {movie: IMovie, genres: Genres, onClick?: () => void})
                   <p>{props.movie.title}</p>
               </S.ContainerTitle>
             </S.RightTop>
-            <div className={styles.rightBottom}>
-              <div className={styles.releaseDate}>
+            <S.RightBottom>
+              <S.ReleaseDate>
                 <p>{converterDataAmericanaParaBrasileira(props.movie.release_date)}</p>
-              </div>
+              </S.ReleaseDate>
               <S.OverView>{limitarTexto(props.movie.overview, 300) || 'Nenhuma descrição encontrada.'}</S.OverView>
-            </div>
+            </S.RightBottom>
             <div>
               <S.GenresContainer>
                   {
@@ -53,7 +53,7 @@ const CardMovie = (props: {movie: IMovie, genres: Genres, onClick?: () => void})
                 </S.GenresContainer>
             </div>
           </S.Right>
-        </div>
+        </S.Container>
   )
 }
 

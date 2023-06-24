@@ -3,13 +3,12 @@ import type { NextPage } from 'next'
 import { TmdbServices } from '../services/tmdb'
 import { IMovie } from '../types/movies'
 import CardMovie from '../components/CardMovie'
-import styles from './page.module.css'
 import InputComponent from '../components/Input'
 import { useMoviesContext } from '../contexts/userMovies'
 import { getGenreIdByName, isNumeric, searchObjectsByIds } from '../utils/movies'
 import { useRouter } from 'next/router'
 import Pagination from '../components/Pagination'
-
+import * as S from './styles'
 
 const Home: NextPage = () => {
   const route = useRouter()
@@ -22,10 +21,6 @@ const Home: NextPage = () => {
   const [moviesPerPage] = React.useState(5);
 
 
-  // Get current posts
-  const FILMES_POR_PAGINA = 20;
-  const ITENS_POR_PAGINA = 5;
-  const [filmesExibidos, setFilmesExibidos] = React.useState(0)
   const indexOfLastPost = currentPage * moviesPerPage;
   const indexOfFirstPost = indexOfLastPost - moviesPerPage;
   const currentMovies = movies.slice(indexOfFirstPost, indexOfLastPost);
@@ -107,15 +102,15 @@ const Home: NextPage = () => {
   }
 
   return (
-    <section className={styles.main}>
+    <S.Section>
     <InputComponent placeholder='Busque um filme por nome, ano ou gênero' value={query} onChange={handleInputChange}/>
-    <div className={styles.moviesContainer}>
+    <S.MoviesContainer>
     {
       currentMovies.map((movie, index) => {
         return <CardMovie onClick={() => route.push(`/${movie.id}`)} genres={searchObjectsByIds(genres, movie.genre_ids)} key={index} movie={movie}/>
       })
     }
-    </div>
+    </S.MoviesContainer>
     <footer>
       <Pagination
         nextPage={nextPage}
@@ -127,7 +122,7 @@ const Home: NextPage = () => {
       />
 
     </footer>
-  </section>
+  </S.Section>
   )
 }
 
