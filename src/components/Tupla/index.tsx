@@ -34,7 +34,7 @@ const Tupla = ({
 				{chave !== '' ? chave + `${twoDots ? ':' : ''}` : chave}
 			</S.Text>
 
-			<S.Text className="tupla-value" style={{fontSize: '14px', fontWeight: 400, ...textStyle}}>
+			<S.Text className="tupla-value" style={{fontSize: '14px', fontWeight: 400, textAlign: 'center', ...textStyle}}>
 				{value || '--'}
 			</S.Text>
 		</S.Container>

@@ -6,6 +6,7 @@ import Tupla from "../../components/Tupla";
 import { converterDataAmericanaParaBrasileira, converterIdiomaTMDB, converterMinutosParaHoras, formatarValor, mapearParaPortugues } from "../../utils/movies";
 import Image from 'next/image'
 import GenreComponent from "../../components/Genre";
+import AverageCircle from "../../components/AverageCircle";
 
 function MovieTemplate({ movie }: MyPageProps) {
 
@@ -25,7 +26,7 @@ function MovieTemplate({ movie }: MyPageProps) {
         </S.Row>
         
         <S.Row style={{backgroundColor: '#F2F2F2'}}>
-          <S.BoxLeft style={{padding: '24px', gap: '24px', flexDirection: 'column'}}>
+          <S.BoxLeft style={{padding: '24px', gap: '24px', flexDirection: 'column', justifyContent: 'space-around'}}>
               <S.Column>
                 <S.Subtitle>Sinopse</S.Subtitle>
                 <S.Line/>
@@ -34,7 +35,7 @@ function MovieTemplate({ movie }: MyPageProps) {
               <S.Column>
                 <S.Subtitle>Informações</S.Subtitle>
                 <S.Line/>
-                <S.Row style={{gap: '8px'}}>
+                <S.Row style={{justifyContent: 'space-between'}}>
                   <Tupla  chave={"Situação"} value={mapearParaPortugues(movie.status)}  key={""}/>
                   <Tupla  chave={"Idioma"} value={converterIdiomaTMDB(movie.original_language)}  key={""}/>
                   <Tupla  chave={"Duração"} value={converterMinutosParaHoras(movie.runtime)}  key={""}/>
@@ -43,12 +44,13 @@ function MovieTemplate({ movie }: MyPageProps) {
                   <Tupla  chave={"Lucro"} value={formatarValor(movie.revenue - movie.budget)}  key={""}/>
                 </S.Row>
               </S.Column>
-              <S.Row>
-              <S.GenresContainer>
-                  {
-                    movie.genres.map(g => <GenreComponent key={g.id} genre={g.name}/>)
-                  }
-                </S.GenresContainer>
+              <S.Row style={{justifyContent: 'space-between', alignItems: 'flex-start'}}>
+                <S.GenresContainer>
+                    {
+                      movie.genres.map(g => <GenreComponent key={g.id} genre={g.name}/>)
+                    }
+                  </S.GenresContainer>
+                  <AverageCircle size="large" position="relative" value={movie.vote_average}/>
               </S.Row>
           </S.BoxLeft>
           <S.BoxRight>
