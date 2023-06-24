@@ -36,4 +36,9 @@ Está concluído, todavia pode ser melhorado.
 2. Padronizar totalmente para styled-components.
 
 
+### Exemplo
+[![Demonstração do Meu Projeto]([https://example.com/video-thumbnail.jpg](https://github.com/michael-zero/tmdb-cube-movies/blob/main/public/intro.png)https://github.com/michael-zero/tmdb-cube-movies/blob/main/public/intro.png)](https://www.youtube.com/watch?v=video-id)
+
+
+
 
