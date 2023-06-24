@@ -37,7 +37,8 @@ Está concluído, todavia pode ser melhorado.
 
 
 ### Exemplo
-[![Demonstração do Meu Projeto]([https://example.com/video-thumbnail.jpg](https://github.com/michael-zero/tmdb-cube-movies/blob/main/public/intro.png)https://github.com/michael-zero/tmdb-cube-movies/blob/main/public/intro.png)](https://www.youtube.com/watch?v=video-id)
+Clique e veja um pequeno vídeo.
+[![Demonstração do Meu Projeto](/public/intro.png)]([https://www.youtube.com/watch?v=video-id](https://youtu.be/7Qvs3b9pZW8)https://youtu.be/7Qvs3b9pZW8)
 
 
 
