@@ -8,12 +8,11 @@ Aplicação frontend que consome informações da API do The Movie Database.
 - Busca por filmes: nome, ano ou gênero.
 - Informações gerais sobre filmes: oraçamentos, avaliação, duração do filme.
 - Exibição do trailer, caso exista.
-- 
 
 ## Instalação
 
-yarn install: execute esse comando na raiz do projeto para instalar todas as dependências. 
-yarn dev: para executar a aplicação.
+```yarn install```: execute esse comando na raiz do projeto para instalar todas as dependências. 
+```yarn dev```: para executar a aplicação.
 
 ## Uso
 
@@ -26,15 +25,17 @@ Ao clicar em filme, uma requisição será feita do lado do servidor trazendo in
 
 michaeldevjs@gmail.com
 
-## Agradecimentos
-
-Agradeça às pessoas ou organizações que ajudaram, inspiraram ou contribuíram de alguma forma para o projeto.
-
 ## Status do Projeto
 
 Está concluído, todavia pode ser melhorado. 
 1. Paginação que devido ao tempo não deu para usar a melhor implementação.
 2. Padronizar totalmente para styled-components.
+
+
+### Exemplo
+Clique e veja um pequeno vídeo.
+[![Demonstração do Meu Projeto](/public/intro.png)]([https://www.youtube.com/watch?v=video-id](https://youtu.be/7Qvs3b9pZW8)https://youtu.be/7Qvs3b9pZW8)
+
 
 
 
